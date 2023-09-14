@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './questoes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +52,7 @@ class MyAppState extends State<MyApp> {
       setState(
         () {
           if (indice < lista.length) {
-            indice++;
+            indice++; //incrementando para perpassar listas
           }
         },
       );
@@ -59,49 +60,84 @@ class MyAppState extends State<MyApp> {
 
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(lista[indice], style: const TextStyle(fontSize: 20),),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ButtonStyle(minimumSize: MaterialStateProperty.all(const Size(180, 40.0))),
-                    onPressed: () => proximaPergunta(),
-                    child: Text(a1[indice]),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  ElevatedButton(
-                    style: ButtonStyle(minimumSize: MaterialStateProperty.all(const Size(180, 40.0))),
-                    onPressed: () => proximaPergunta(),
-                    child: Text(a2[indice]),
-                  ),
-                ],
+          child: Container(     //parte blueGrey arredondada
+            width: 380,
+            height: 700,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(20),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ButtonStyle(minimumSize: MaterialStateProperty.all(const Size(180, 40.0))),
-                    onPressed: () => proximaPergunta(),
-                    child: Text(b1[indice]),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  ElevatedButton(
-                    style: ButtonStyle(minimumSize: MaterialStateProperty.all(const Size(180, 40.0))),
-                    onPressed: () => proximaPergunta(),
-                    child: Text(b2[indice]),
-                  ),
-                ],
-              ),
-            ],
+              color: Colors.blueGrey[900],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Questao(lista[indice]), //construtor que chama as questões da lista de acordo com o indice
+                const SizedBox(height: 20),
+                Row( //as duas primeiras questôes 
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(
+                            const Size(175, 40.0),
+                          ),
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color.fromARGB(255, 8, 119, 210))),
+                      onPressed: () => proximaPergunta(),
+                      child: Text(a1[indice]),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(
+                          const Size(175, 40.0),
+                        ),
+                        backgroundColor: MaterialStateProperty.all(
+                          const Color.fromARGB(255, 8, 119, 210),
+                        ),
+                      ),
+                      onPressed: () => proximaPergunta(),
+                      child: Text(a2[indice]),
+                    ),
+                  ],
+                ),
+                Row(       //as duas segundas quuestôes
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all(
+                          const Size(175, 40.0),
+                        ),
+                        backgroundColor: MaterialStateProperty.all(
+                          const Color.fromARGB(255, 8, 119, 210),
+                        ),
+                      ),
+                      onPressed: () => proximaPergunta(),
+                      child: Text(b1[indice]),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          minimumSize: MaterialStateProperty.all(
+                            const Size(175, 40.0),
+                          ),
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color.fromARGB(255, 8, 119, 210))),
+                      onPressed: () => proximaPergunta(),
+                      child: Text(b2[indice]),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
