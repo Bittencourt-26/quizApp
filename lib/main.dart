@@ -14,6 +14,8 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   int indice = 0;
+  int contadorRespostasCertas = 0;
+  int contadorRespostasErradas = 0;
 
   // Correção aqui
   @override
@@ -24,47 +26,47 @@ class MyAppState extends State<MyApp> {
       'Quando foi o golpe do Estado Novo?',
       '',
     ];
-    final List a1 = [
+    final List resposta1 = [
       'Brasil',
       '2003',
       '100 a.c',
       '',
     ];
-    final List a2 = [
+    final List resposta2 = [
       'Inglaterra',
       'Depois da terceira',
       '1936',
       '',
     ];
-    final List b1 = [
+    final List resposta3 = [
       'Vaticano',
       '1945',
       'Ontem',
       '',
     ];
-    final List b2 = [
+    final List resposta4 = [
       'Congo',
       'Irineu',
       'Antes do Estado Velho',
       '',
     ];
-    void proximaPergunta() {
-      setState(
-        () {
-          if (indice < lista.length) {
-            indice++; //incrementando para perpassar listas
-          }
-        },
-      );
-    }
+
+    final List respostasCertas = [
+      'Inglaterra',
+      '1945',
+      '1936',
+      '',
+    ];
 
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-          child: Container(     //parte blueGrey arredondada
-            width: 380,
-            height: 700,
+          child: Container(
+            //parte blueGrey arredondada
+            width: double.infinity,
+            height: 900,
+            margin: const EdgeInsets.only(top: 50),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
@@ -74,25 +76,38 @@ class MyAppState extends State<MyApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Questao(lista[indice]), //construtor que chama as questões da lista de acordo com o indice
+                Questao(lista[
+                    indice]), //construtor que chama as questões da lista de acordo com o indice
                 const SizedBox(height: 20),
-                Row( //as duas primeiras questôes 
+                Row(
+                  //as duas primeiras questôes
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
+                      //respota1
                       style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all(
                             const Size(175, 40.0),
                           ),
                           backgroundColor: MaterialStateProperty.all(
                               const Color.fromARGB(255, 8, 119, 210))),
-                      onPressed: () => proximaPergunta(),
-                      child: Text(a1[indice]),
+                      onPressed: () => setState(() {
+                        if (respostasCertas.contains(resposta1[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      }),
+                      child: Text(resposta1[indice]),
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     ElevatedButton(
+                      //resposta 2
                       style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all(
                           const Size(175, 40.0),
@@ -101,40 +116,87 @@ class MyAppState extends State<MyApp> {
                           const Color.fromARGB(255, 8, 119, 210),
                         ),
                       ),
-                      onPressed: () => proximaPergunta(),
-                      child: Text(a2[indice]),
+                      onPressed: () => setState(() {
+                        if (respostasCertas.contains(resposta2[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      }),
+                      child: Text(resposta2[indice]),
                     ),
                   ],
                 ),
-                Row(       //as duas segundas quuestôes
+                Row(
+                  //as duas segundas quuestôes
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
+                      // resposta 3
                       style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(
-                          const Size(175, 40.0),
-                        ),
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(175, 40.0)),
                         backgroundColor: MaterialStateProperty.all(
                           const Color.fromARGB(255, 8, 119, 210),
                         ),
                       ),
-                      onPressed: () => proximaPergunta(),
-                      child: Text(b1[indice]),
+                      onPressed: () => setState(() {
+                        if (respostasCertas.contains(resposta3[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      }),
+                      child: Text(resposta3[indice]),
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     ElevatedButton(
+                      //resposta 4
                       style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all(
-                            const Size(175, 40.0),
-                          ),
+                          minimumSize:
+                              MaterialStateProperty.all(const Size(175, 40.0)),
                           backgroundColor: MaterialStateProperty.all(
                               const Color.fromARGB(255, 8, 119, 210))),
-                      onPressed: () => proximaPergunta(),
-                      child: Text(b2[indice]),
+                      onPressed: () => setState(() {
+                        if (respostasCertas.contains(resposta4[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      }),
+                      child: Text(resposta4[indice]),
                     ),
                   ],
+                ),
+                const SizedBox(height: 00),
+                Container(
+                  color: Colors.black,
+                  child: Row(
+                    children: [
+                      Text(
+                        'Acertos: $contadorRespostasCertas',
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      const SizedBox(width: 150,),
+                      Text(
+                        'Erros: $contadorRespostasErradas',
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 18),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
