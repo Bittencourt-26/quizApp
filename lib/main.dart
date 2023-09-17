@@ -24,30 +24,35 @@ class MyAppState extends State<MyApp> {
       'Qual país iniciou a revolução industrial?',
       'Quando acabou a segunda guerra mundial?',
       'Quando foi o golpe do Estado Novo?',
+      'Em que ano foi o golpe militar no Brasil?',
       '',
     ];
     final List resposta1 = [
       'Brasil',
       '2003',
       '100 a.c',
+      '1929',
       '',
     ];
     final List resposta2 = [
       'Inglaterra',
       'Depois da terceira',
       '1936',
+      '1930',
       '',
     ];
     final List resposta3 = [
       'Vaticano',
       '1945',
       'Ontem',
+      '1964',
       '',
     ];
     final List resposta4 = [
       'Congo',
       'Irineu',
       'Antes do Estado Velho',
+      '1985',
       '',
     ];
 
@@ -55,151 +60,153 @@ class MyAppState extends State<MyApp> {
       'Inglaterra',
       '1945',
       '1936',
-      '',
+      '1964',
     ];
 
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
-        body: Center(
-          child: Container(
-            //parte blueGrey arredondada
-            width: double.infinity,
-            height: 900,
-            margin: const EdgeInsets.only(top: 50),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(20),
-              ),
-              color: Colors.blueGrey[900],
+        body: Container(
+          //parte blueGrey arredondada
+          width: double.infinity,
+          height: double.infinity,
+          margin: const EdgeInsets.only(top: 50),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Questao(lista[
-                    indice]), //construtor que chama as questões da lista de acordo com o indice
-                const SizedBox(height: 20),
-                Row(
-                  //as duas primeiras questôes
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      //respota1
-                      style: ButtonStyle(
-                          minimumSize: MaterialStateProperty.all(
-                            const Size(175, 40.0),
-                          ),
-                          backgroundColor: MaterialStateProperty.all(
-                              const Color.fromARGB(255, 8, 119, 210))),
-                      onPressed: () => setState(() {
-                        if (respostasCertas.contains(resposta1[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      }),
-                      child: Text(resposta1[indice]),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      //resposta 2
-                      style: ButtonStyle(
+            color: Colors.blueGrey[900],
+          ),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 300,
+              ),
+              Questao(lista[
+                  indice]), //construtor que chama as questões da lista de acordo com o indice
+              const SizedBox(height: 20),
+              Row(
+                //as duas primeiras questôes
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    //respota1
+                    style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all(
                           const Size(175, 40.0),
                         ),
                         backgroundColor: MaterialStateProperty.all(
-                          const Color.fromARGB(255, 8, 119, 210),
-                        ),
+                            const Color.fromARGB(255, 8, 119, 210))),
+                    onPressed: () => setState(() {
+                      if (respostasCertas.contains(resposta1[indice])) {
+                        contadorRespostasCertas++;
+                      } else {
+                        contadorRespostasErradas++;
+                      }
+                      if (indice < lista.length) {
+                        indice++;
+                      }
+                    }),
+                    child: Text(resposta1[indice]),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    //resposta 2
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(
+                        const Size(175, 40.0),
                       ),
-                      onPressed: () => setState(() {
-                        if (respostasCertas.contains(resposta2[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      }),
-                      child: Text(resposta2[indice]),
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 8, 119, 210),
+                      ),
                     ),
-                  ],
-                ),
-                Row(
-                  //as duas segundas quuestôes
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      // resposta 3
-                      style: ButtonStyle(
+                    onPressed: () => setState(() {
+                      if (respostasCertas.contains(resposta2[indice])) {
+                        contadorRespostasCertas++;
+                      } else {
+                        contadorRespostasErradas++;
+                      }
+                      if (indice < lista.length) {
+                        indice++;
+                      }
+                    }),
+                    child: Text(resposta2[indice]),
+                  ),
+                ],
+              ),
+              Row(
+                //as duas segundas quuestôes
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    // resposta 3
+                    style: ButtonStyle(
+                      minimumSize:
+                          MaterialStateProperty.all(const Size(175, 40.0)),
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 8, 119, 210),
+                      ),
+                    ),
+                    onPressed: () => setState(() {
+                      if (respostasCertas.contains(resposta3[indice])) {
+                        contadorRespostasCertas++;
+                      } else {
+                        contadorRespostasErradas++;
+                      }
+                      if (indice < lista.length) {
+                        indice++;
+                      }
+                    }),
+                    child: Text(resposta3[indice]),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    //resposta 4
+                    style: ButtonStyle(
                         minimumSize:
                             MaterialStateProperty.all(const Size(175, 40.0)),
                         backgroundColor: MaterialStateProperty.all(
-                          const Color.fromARGB(255, 8, 119, 210),
-                        ),
-                      ),
-                      onPressed: () => setState(() {
-                        if (respostasCertas.contains(resposta3[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      }),
-                      child: Text(resposta3[indice]),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      //resposta 4
-                      style: ButtonStyle(
-                          minimumSize:
-                              MaterialStateProperty.all(const Size(175, 40.0)),
-                          backgroundColor: MaterialStateProperty.all(
-                              const Color.fromARGB(255, 8, 119, 210))),
-                      onPressed: () => setState(() {
-                        if (respostasCertas.contains(resposta4[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      }),
-                      child: Text(resposta4[indice]),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 00),
-                Container(
-                  color: Colors.black,
-                  child: Row(
-                    children: [
-                      Text(
-                        'Acertos: $contadorRespostasCertas',
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                      const SizedBox(width: 150,),
-                      Text(
-                        'Erros: $contadorRespostasErradas',
-                        style:
-                            const TextStyle(color: Colors.white, fontSize: 18),
-                      )
-                    ],
+                            const Color.fromARGB(255, 8, 119, 210))),
+                    onPressed: () => setState(() {
+                      if (respostasCertas.contains(resposta4[indice])) {
+                        contadorRespostasCertas++;
+                      } else {
+                        contadorRespostasErradas++;
+                      }
+                      if (indice < lista.length) {
+                        indice++;
+                      }
+                    }),
+                    child: Text(resposta4[indice]),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+              const SizedBox(height: 120),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '$contadorRespostasCertas',
+                    style: TextStyle(
+                      color: Colors.green[900],
+                      fontSize: 45,
+                    ),
+                  ),
+                  const SizedBox(width: 200),
+                  Text(
+                    '$contadorRespostasErradas',
+                    style: TextStyle(
+                      color: Colors.red[900],
+                      fontSize: 45,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
