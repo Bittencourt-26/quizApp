@@ -25,6 +25,7 @@ class MyAppState extends State<MyApp> {
       'Quando acabou a segunda guerra mundial?',
       'Quando foi o golpe do Estado Novo?',
       'Em que ano foi o golpe militar no Brasil?',
+      'Qual foi o lema da revolução francesa?',
       '',
     ];
     final List resposta1 = [
@@ -32,6 +33,7 @@ class MyAppState extends State<MyApp> {
       '2003',
       '100 a.c',
       '1929',
+      'Igualdade, Irmandade e Fraternidade',
       '',
     ];
     final List resposta2 = [
@@ -39,6 +41,7 @@ class MyAppState extends State<MyApp> {
       'Depois da terceira',
       '1936',
       '1930',
+      'Liberdade, Igualdade e Irmandade',
       '',
     ];
     final List resposta3 = [
@@ -46,6 +49,7 @@ class MyAppState extends State<MyApp> {
       '1945',
       'Ontem',
       '1964',
+      'Liberdade, Igualdade e fraternidade',
       '',
     ];
     final List resposta4 = [
@@ -53,6 +57,7 @@ class MyAppState extends State<MyApp> {
       'Irineu',
       'Antes do Estado Velho',
       '1985',
+      'Liberdade, Fraternidade e Solidariedade',
       '',
     ];
 
@@ -61,8 +66,8 @@ class MyAppState extends State<MyApp> {
       '1945',
       '1936',
       '1964',
+      'Liberdade, Igualdade e fraternidade',
     ];
-
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
@@ -82,17 +87,19 @@ class MyAppState extends State<MyApp> {
               const SizedBox(
                 height: 300,
               ),
-              Questao(lista[
-                  indice]), //construtor que chama as questões da lista de acordo com o indice
+              Questao(lista[indice]), //construtor que chama as questões da lista de acordo com o indice
               const SizedBox(height: 20),
               Row(
                 //as duas primeiras questôes
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    //respota1
+                    //resposta1
                     style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all(
+                          const Size(175, 40.0),
+                        ),
+                        maximumSize: MaterialStateProperty.all(
                           const Size(175, 40.0),
                         ),
                         backgroundColor: MaterialStateProperty.all(
@@ -107,7 +114,21 @@ class MyAppState extends State<MyApp> {
                         indice++;
                       }
                     }),
-                    child: Text(resposta1[indice]),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Text(
+                            resposta1[indice],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize:
+                                    constraints.maxWidth >= 175 ? 16 : 13),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     width: 10,
@@ -116,6 +137,9 @@ class MyAppState extends State<MyApp> {
                     //resposta 2
                     style: ButtonStyle(
                       minimumSize: MaterialStateProperty.all(
+                        const Size(175, 40.0),
+                      ),
+                      maximumSize: MaterialStateProperty.all(
                         const Size(175, 40.0),
                       ),
                       backgroundColor: MaterialStateProperty.all(
@@ -132,7 +156,21 @@ class MyAppState extends State<MyApp> {
                         indice++;
                       }
                     }),
-                    child: Text(resposta2[indice]),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Text(
+                            resposta2[indice],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize:
+                                    constraints.maxWidth >= 175 ? 16 : 13),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -143,8 +181,12 @@ class MyAppState extends State<MyApp> {
                   ElevatedButton(
                     // resposta 3
                     style: ButtonStyle(
-                      minimumSize:
-                          MaterialStateProperty.all(const Size(175, 40.0)),
+                      minimumSize: MaterialStateProperty.all(
+                        const Size(175, 40.0),
+                      ),
+                      maximumSize: MaterialStateProperty.all(
+                        const Size(175, 40.0),
+                      ),
                       backgroundColor: MaterialStateProperty.all(
                         const Color.fromARGB(255, 8, 119, 210),
                       ),
@@ -159,7 +201,21 @@ class MyAppState extends State<MyApp> {
                         indice++;
                       }
                     }),
-                    child: Text(resposta3[indice]),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Text(
+                            resposta3[indice],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize:
+                                    constraints.maxWidth >= 175 ? 16 : 13),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     width: 10,
@@ -167,10 +223,16 @@ class MyAppState extends State<MyApp> {
                   ElevatedButton(
                     //resposta 4
                     style: ButtonStyle(
-                        minimumSize:
-                            MaterialStateProperty.all(const Size(175, 40.0)),
-                        backgroundColor: MaterialStateProperty.all(
-                            const Color.fromARGB(255, 8, 119, 210))),
+                      minimumSize: MaterialStateProperty.all(
+                        const Size(175, 40.0),
+                      ),
+                      maximumSize: MaterialStateProperty.all(
+                        const Size(175, 40.0),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 8, 119, 210),
+                      ),
+                    ),
                     onPressed: () => setState(() {
                       if (respostasCertas.contains(resposta4[indice])) {
                         contadorRespostasCertas++;
@@ -181,7 +243,21 @@ class MyAppState extends State<MyApp> {
                         indice++;
                       }
                     }),
-                    child: Text(resposta4[indice]),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Text(
+                            resposta4[indice],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize:
+                                    constraints.maxWidth >= 175 ? 16 : 13),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
