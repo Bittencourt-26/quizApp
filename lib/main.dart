@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/botao.dart';
 import './questoes.dart';
 
 void main() {
@@ -87,176 +88,83 @@ class MyAppState extends State<MyApp> {
               const SizedBox(
                 height: 300,
               ),
-              Questao(lista[indice]), //construtor que chama as questões da lista de acordo com o indice
+              Questao(lista[
+                  indice]), //construtor que chama as questões da lista de acordo com o indice
               const SizedBox(height: 20),
               Row(
                 //as duas primeiras questôes
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    //resposta1
-                    style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(
-                          const Size(175, 40.0),
-                        ),
-                        maximumSize: MaterialStateProperty.all(
-                          const Size(175, 40.0),
-                        ),
-                        backgroundColor: MaterialStateProperty.all(
-                            const Color.fromARGB(255, 8, 119, 210))),
-                    onPressed: () => setState(() {
-                      if (respostasCertas.contains(resposta1[indice])) {
-                        contadorRespostasCertas++;
-                      } else {
-                        contadorRespostasErradas++;
-                      }
-                      if (indice < lista.length) {
-                        indice++;
-                      }
-                    }),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          return Text(
-                            resposta1[indice],
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize:
-                                    constraints.maxWidth >= 175 ? 16 : 13),
-                          );
-                        },
-                      ),
+                  BotaoPersonalizado(
+                    texto: resposta1[indice],
+                    onPressed: () => setState(
+                      () {
+                        if (respostasCertas.contains(resposta1[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
-                  ElevatedButton(
-                    //resposta 2
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(
-                        const Size(175, 40.0),
-                      ),
-                      maximumSize: MaterialStateProperty.all(
-                        const Size(175, 40.0),
-                      ),
-                      backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 8, 119, 210),
-                      ),
+                  BotaoPersonalizado(
+                    texto: resposta2[indice],
+                    onPressed: () => setState(
+                      () {
+                        if (respostasCertas.contains(resposta2[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      },
                     ),
-                    onPressed: () => setState(() {
-                      if (respostasCertas.contains(resposta2[indice])) {
-                        contadorRespostasCertas++;
-                      } else {
-                        contadorRespostasErradas++;
-                      }
-                      if (indice < lista.length) {
-                        indice++;
-                      }
-                    }),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          return Text(
-                            resposta2[indice],
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize:
-                                    constraints.maxWidth >= 175 ? 16 : 13),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
+                  )
                 ],
               ),
               Row(
                 //as duas segundas quuestôes
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    // resposta 3
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(
-                        const Size(175, 40.0),
-                      ),
-                      maximumSize: MaterialStateProperty.all(
-                        const Size(175, 40.0),
-                      ),
-                      backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 8, 119, 210),
-                      ),
-                    ),
-                    onPressed: () => setState(() {
-                      if (respostasCertas.contains(resposta3[indice])) {
-                        contadorRespostasCertas++;
-                      } else {
-                        contadorRespostasErradas++;
-                      }
-                      if (indice < lista.length) {
-                        indice++;
-                      }
-                    }),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          return Text(
-                            resposta3[indice],
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize:
-                                    constraints.maxWidth >= 175 ? 16 : 13),
-                          );
-                        },
-                      ),
+                  BotaoPersonalizado(
+                    texto: resposta3[indice],
+                    onPressed: () => setState(
+                      () {
+                        if (respostasCertas.contains(resposta3[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
-                  ElevatedButton(
-                    //resposta 4
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(
-                        const Size(175, 40.0),
-                      ),
-                      maximumSize: MaterialStateProperty.all(
-                        const Size(175, 40.0),
-                      ),
-                      backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 8, 119, 210),
-                      ),
-                    ),
-                    onPressed: () => setState(() {
-                      if (respostasCertas.contains(resposta4[indice])) {
-                        contadorRespostasCertas++;
-                      } else {
-                        contadorRespostasErradas++;
-                      }
-                      if (indice < lista.length) {
-                        indice++;
-                      }
-                    }),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          return Text(
-                            resposta4[indice],
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize:
-                                    constraints.maxWidth >= 175 ? 16 : 13),
-                          );
-                        },
-                      ),
+                  BotaoPersonalizado(
+                    texto: resposta4[indice],
+                    onPressed: () => setState(
+                      () {
+                        if (respostasCertas.contains(resposta4[indice])) {
+                          contadorRespostasCertas++;
+                        } else {
+                          contadorRespostasErradas++;
+                        }
+                        if (indice < lista.length) {
+                          indice++;
+                        }
+                      },
                     ),
                   ),
                 ],
