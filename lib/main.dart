@@ -17,7 +17,6 @@ class MyAppState extends State<MyApp> {
   int indice = 0;
   int contadorRespostasCertas = 0;
   int contadorRespostasErradas = 0;
-
   // Correção aqui
   @override
   Widget build(BuildContext context) {
@@ -69,6 +68,21 @@ class MyAppState extends State<MyApp> {
       '1964',
       'Liberdade, Igualdade e fraternidade',
     ];
+    funcChecaEIncrementa(String resposta) {
+      setState(
+        () {
+          if (respostasCertas.contains(resposta)) {
+            contadorRespostasCertas++;
+          } else {
+            contadorRespostasErradas++;
+          }
+          if (indice < lista.length) {
+            indice++;
+          }
+        },
+      );
+    }
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
@@ -97,36 +111,14 @@ class MyAppState extends State<MyApp> {
                 children: [
                   BotaoPersonalizado(
                     texto: resposta1[indice],
-                    onPressed: () => setState(
-                      () {
-                        if (respostasCertas.contains(resposta1[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      },
-                    ),
+                    onPressed: () => funcChecaEIncrementa(resposta1[indice])
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   BotaoPersonalizado(
                     texto: resposta2[indice],
-                    onPressed: () => setState(
-                      () {
-                        if (respostasCertas.contains(resposta2[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      },
-                    ),
+                    onPressed: () => funcChecaEIncrementa(resposta2[indice])
                   )
                 ],
               ),
@@ -136,36 +128,14 @@ class MyAppState extends State<MyApp> {
                 children: [
                   BotaoPersonalizado(
                     texto: resposta3[indice],
-                    onPressed: () => setState(
-                      () {
-                        if (respostasCertas.contains(resposta3[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      },
-                    ),
+                    onPressed: () => funcChecaEIncrementa(resposta3[indice])
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   BotaoPersonalizado(
                     texto: resposta4[indice],
-                    onPressed: () => setState(
-                      () {
-                        if (respostasCertas.contains(resposta4[indice])) {
-                          contadorRespostasCertas++;
-                        } else {
-                          contadorRespostasErradas++;
-                        }
-                        if (indice < lista.length) {
-                          indice++;
-                        }
-                      },
-                    ),
+                    onPressed: () => funcChecaEIncrementa(resposta4[indice])
                   ),
                 ],
               ),

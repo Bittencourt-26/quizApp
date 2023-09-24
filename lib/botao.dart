@@ -29,7 +29,7 @@ class _BotaoPersonalizadoState extends State<BotaoPersonalizado> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Text(
-              widget.texto ?? 'aa',
+              widget.texto ?? 'aviso: Valor padro foi ado na ausencia de um valor para o campo texto',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: constraints.maxWidth >= 175 ? 16 : 13),
