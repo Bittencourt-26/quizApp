@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BotaoPersonalizado extends StatefulWidget {
-  String? texto;
-  VoidCallback? onPressed;
-  BotaoPersonalizado({this.texto, this.onPressed, super.key});
+  final String? texto;
+  final VoidCallback? onPressed;
+  const BotaoPersonalizado({this.texto, this.onPressed, super.key});
 
   @override
   State<BotaoPersonalizado> createState() => _BotaoPersonalizadoState();
@@ -29,7 +29,7 @@ class _BotaoPersonalizadoState extends State<BotaoPersonalizado> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Text(
-              widget.texto ?? 'aviso: Valor padro foi ado na ausencia de um valor para o campo texto',
+              widget.texto ?? 'aviso: Essa é uma mensagem padrão exibida caso valor do texto seja null por razão desconhecida',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: constraints.maxWidth >= 175 ? 16 : 13),
