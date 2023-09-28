@@ -46,12 +46,18 @@ class MyAppState extends State<MyApp> {
                 )
               : tela2TelaDosTemas
                   ? TelaDosTemas(
-                      listaDeBotoes: [
+                    botaoVoltar: () {
+                      setState(() {
+                        telaInicial = true;
+                      });
+                    },
+                    listaDeBotoes: [
                         BotaoDaTelaDosTemas(
                           parametroOnPressed: () {
                             setState(() {
                               telaInicial = false;
-                              tela2TelaDosTemas = true;
+                              tela2TelaDosTemas = false;
+                              tela3TelaConhecimentosGerais = true;
                             });
                           },
                           texto: 'Conhecimentos Gerais',
@@ -61,7 +67,8 @@ class MyAppState extends State<MyApp> {
                             setState(() {
                               telaInicial = false;
                               tela2TelaDosTemas = false;
-                              tela3TelaConhecimentosGerais = true;
+                              tela3TelaConhecimentosGerais = false;
+                              tela4ou5TelaFutebolOuHistoria = true;
                             });
                           },
                           texto: 'Quiz de Futebol',
@@ -108,6 +115,7 @@ class MyAppState extends State<MyApp> {
                                 'Liberdade, Fraternidade e Solidariedade',
                               ],
                               respostasCertas: const [
+                                'Inglaterra'
                                 '1945',
                                 '1936',
                                 '1964',
@@ -115,7 +123,8 @@ class MyAppState extends State<MyApp> {
                               ],
                               onPressed: () {
                                 setState(() {
-                                  telaInicial = true;
+                                  telaInicial = false;
+                                  tela2TelaDosTemas = true;
                                 });
                               },
                             )
@@ -126,13 +135,14 @@ class MyAppState extends State<MyApp> {
                                     'Quando o Flamengo foi fundado?'
                                   ],
                                   resposta1: const ['2019'],
-                                  resposta2: const ['1981'],
+                                  resposta2: const ['1895'],
                                   resposta3: const ['1903'],
-                                  resposta4: const ['1907'],
+                                  resposta4: const ['1981'],
                                   respostasCertas: const ['1907'],
                                   onPressed: () {
                                     setState(() {
-                                      telaInicial = true;
+                                      telaInicial = false;
+                                      tela2TelaDosTemas = true;
                                     });
                                   },
                                 )

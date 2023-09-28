@@ -5,7 +5,13 @@ class TelaDosTemas extends StatefulWidget {
   final String? texto;
   final VoidCallback? onPressed;
   final List<BotaoDaTelaDosTemas>? listaDeBotoes;
-  const TelaDosTemas({this.texto, this.onPressed, this.listaDeBotoes, super.key});
+  final VoidCallback? botaoVoltar;
+  const TelaDosTemas(
+      {this.texto,
+      this.onPressed,
+      this.listaDeBotoes,
+      required this.botaoVoltar,
+      super.key});
 
   @override
   State<TelaDosTemas> createState() => _MainscreenState();
@@ -24,8 +30,14 @@ class _MainscreenState extends State<TelaDosTemas> {
       ),
       child: Column(
         children: [
-          if(widget.listaDeBotoes != null)
-            ...widget.listaDeBotoes! 
+          const SizedBox(height: 70),
+          const Text('Temas disponíveis no momento:', style: TextStyle(color: Colors.white, fontSize: 22),),
+          const SizedBox(height: 200),
+          ...widget.listaDeBotoes!,
+          TextButton(
+            onPressed: widget.botaoVoltar,
+            child: const Text('Voltar?'),
+          ),
         ],
       ),
     );

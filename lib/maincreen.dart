@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class MainScreen extends StatelessWidget {
   final VoidCallback? parametroOnPressed1;
   final VoidCallback? parametroOnPressed2;
-  const MainScreen({required this.parametroOnPressed1, required this.parametroOnPressed2, super.key});
+  const MainScreen(
+      {required this.parametroOnPressed1,
+      required this.parametroOnPressed2,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +27,34 @@ class MainScreen extends StatelessWidget {
             'Nome do Jogo',
             style: TextStyle(color: Colors.white, fontSize: 25),
           ),
+          const SizedBox(height: 20), //espaçamento
           ElevatedButton(
             onPressed: parametroOnPressed1,
-            child: const Text('Jogar'),
+            style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+              fixedSize: const Size(190, 45),
+              backgroundColor: Colors.blueGrey[900],
+              side: const BorderSide(
+                color: Color.fromARGB(255, 255, 255, 255),
+                width: 3,
+              ),
+            ),
+            child: const Text('Jogar', style: TextStyle(fontSize: 19),),
           ),
-          ElevatedButton(
+         const SizedBox(height: 5),
+         ElevatedButton(
             onPressed: parametroOnPressed2,
-            child: const Text('Contribuir'),
-          )
+            style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+              fixedSize: const Size(190, 45),
+              backgroundColor: Colors.blueGrey[900],
+              side: const BorderSide(
+                color: Color.fromARGB(255, 255, 255, 255),
+                width: 3,
+              ),
+            ),
+            child: const Text('Contribuir', style: TextStyle(fontSize: 19),),
+          ),
         ],
       ),
     );

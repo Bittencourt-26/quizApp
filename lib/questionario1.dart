@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import './questoes.dart';
 import 'botaodoquestionario.dart';
-
 class Questionario extends StatefulWidget {
   final List<String>? listaDePerguntas;
   final List<String>? resposta1;
@@ -30,13 +29,6 @@ class _QuestionarioState extends State<Questionario> {
   int contadorRespostasErradas = 0;
   @override
   Widget build(BuildContext context) {
-    void reset() {
-      setState(() {
-        indice = 0;
-        contadorRespostasCertas = 0;
-        contadorRespostasErradas = 0;
-      });
-    }
 
     bool estaNoLimite() {
       return indice >= widget.listaDePerguntas!.length - 1;
@@ -129,7 +121,7 @@ class _QuestionarioState extends State<Questionario> {
               ),
             ],
           ),
-          ElevatedButton(onPressed: widget.onPressed, child: const Text('Voltar'))
+          TextButton(onPressed: widget.onPressed, child: const Text('Voltar?'))
         ],
       ),
     );
