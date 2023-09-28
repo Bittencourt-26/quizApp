@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './questoes.dart';
-import './botao.dart';
+import 'botaodoquestionario.dart';
 
 class Questionario extends StatefulWidget {
   final List<String>? listaDePerguntas;
@@ -129,7 +129,7 @@ class _QuestionarioState extends State<Questionario> {
               ),
             ],
           ),
-          ElevatedButton(onPressed: widget.onPressed, child: Text('Voltar'))
+          ElevatedButton(onPressed: widget.onPressed, child: const Text('Voltar'))
         ],
       ),
     );
