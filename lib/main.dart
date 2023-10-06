@@ -86,40 +86,33 @@ class MyAppState extends State<MyApp> {
                                 'Em que ano foi o golpe militar no Brasil?',
                                 'Qual foi o lema da revolução francesa?',
                               ],
-                              resposta1: const [
-                                'Brasil',
-                                '2003',
-                                '100 a.c',
-                                '1929',
-                                'Igualdade, Irmandade e Fraternidade',
-                              ],
-                              resposta2: const [
+                              certas: const [
                                 'Inglaterra',
-                                'Depois da terceira',
+                                '1945',
                                 '1936',
+                                '1964',
+                                'Igualdade, Liberdade e Fraternidade',
+                              ],
+                              erradas1: const [
+                                'Cuba',
+                                'Depois da terceira',
+                                '1900',
                                 '1930',
                                 'Liberdade, Igualdade e Irmandade',
                               ],
-                              resposta3: const [
+                              erradas2: const [
                                 'Vaticano',
-                                '1945',
+                                '1999',
                                 'Ontem',
-                                '1964',
-                                'Liberdade, Igualdade e fraternidade',
+                                '1905',
+                                'Liberdade, saco e fraternidade',
                               ],
-                              resposta4: const [
+                              erradas3: const [
                                 'Congo',
                                 'Irineu',
                                 'Antes do Estado Velho',
                                 '1985',
                                 'Liberdade, Fraternidade e Solidariedade',
-                              ],
-                              respostasCertas: const [
-                                'Inglaterra'
-                                '1945',
-                                '1936',
-                                '1964',
-                                'Liberdade, Igualdade e fraternidade',
                               ],
                               onPressed: () {
                                 setState(() {
@@ -134,11 +127,10 @@ class MyAppState extends State<MyApp> {
                                   listaDePerguntas: const [
                                     'Quando o Flamengo foi fundado?'
                                   ],
-                                  resposta1: const ['2019'],
-                                  resposta2: const ['1895'],
-                                  resposta3: const ['1903'],
-                                  resposta4: const ['1981'],
-                                  respostasCertas: const ['1907'],
+                                  certas: const ['2019'],
+                                  erradas1: const ['1895'],
+                                  erradas2: const ['1903'],
+                                  erradas3: const ['1981'],
                                   onPressed: () {
                                     setState(() {
                                       telaInicial = false;

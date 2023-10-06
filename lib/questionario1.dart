@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import './questoes.dart';
 import 'botaodoquestionario.dart';
+import 'dart:math';
+
 class Questionario extends StatefulWidget {
-  final List<String>? listaDePerguntas;
-  final List<String>? resposta1;
-  final List<String>? resposta2;
-  final List<String>? resposta3;
-  final List<String>? resposta4;
-  final List<String>? respostasCertas;
-  final VoidCallback? onPressed;
+  final List<String> listaDePerguntas;
+  final List<String> erradas1;
+  final List<String> erradas2;
+  final List<String> erradas3;
+  final List<String> certas;
+  final VoidCallback onPressed;
   const Questionario(
-      {this.listaDePerguntas,
-      this.resposta1,
-      this.resposta2,
-      this.resposta3,
-      this.resposta4,
-      this.respostasCertas,
-      this.onPressed,
+      {required this.listaDePerguntas,
+      required this.erradas1,
+      required this.erradas2,
+      required this.erradas3,
+      required this.certas,
+      required this.onPressed,
       super.key});
 
   @override
@@ -24,19 +24,60 @@ class Questionario extends StatefulWidget {
 }
 
 class _QuestionarioState extends State<Questionario> {
+    List A = [];
+    List B = [];
+    List C = [];
+    List D = [];
+  _QuestionarioState(){
+
+    List alternativas = [A, B, C, D];
+
+    for (int para = 0; para < 50; para++) {
+      bool eNul = false;
+      while (!eNul) {
+        int sorteado = Random().nextInt(4);
+        if (alternativas[sorteado].length <= para) {
+          alternativas[sorteado].add(widget.certas[para]);
+          eNul = true;
+        }
+      }
+      while (!eNul) {
+        int sorteado = Random().nextInt(4);
+        if (alternativas[sorteado].length <= para) {
+          alternativas[sorteado].add(widget.erradas1[para]);
+          eNul = true;
+        }
+      }
+      while (!eNul) {
+        int sorteado = Random().nextInt(4);
+        if (alternativas[sorteado].length <= para) {
+          alternativas[sorteado].add(widget.erradas2[para]);
+          eNul = true;
+        }
+      }
+      while (!eNul) {
+        int sorteado = Random().nextInt(4);
+        if (alternativas[sorteado].length <= para) {
+          alternativas[sorteado].add(widget.erradas3[para]);
+          eNul = true;
+        }
+      }
+    }
+  }
   int indice = 0;
   int contadorRespostasCertas = 0;
   int contadorRespostasErradas = 0;
   @override
   Widget build(BuildContext context) {
+   
 
     bool estaNoLimite() {
-      return indice >= widget.listaDePerguntas!.length - 1;
+      return indice >= widget.listaDePerguntas.length - 1;
     }
 
     funcChecaEIncrementa(String resposta) {
       setState(() {
-        if (widget.respostasCertas!.contains(resposta)) {
+        if (widget.certas.contains(resposta)) {
           contadorRespostasCertas++;
         } else {
           contadorRespostasErradas++;
@@ -63,7 +104,7 @@ class _QuestionarioState extends State<Questionario> {
           const SizedBox(
             height: 300,
           ),
-          Questao(widget.listaDePerguntas![
+          Questao(widget.listaDePerguntas[
               indice]), //construtor que chama as questões da listaDePerguntas de acordo com o indice
           const SizedBox(height: 20),
           Row(
@@ -71,16 +112,14 @@ class _QuestionarioState extends State<Questionario> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               BotaoPersonalizado(
-                  texto: widget.resposta1![indice],
-                  onPressed: () =>
-                      funcChecaEIncrementa(widget.resposta1![indice])),
+                  texto: A[indice],
+                  onPressed: () => funcChecaEIncrementa(A[indice])),
               const SizedBox(
                 width: 10,
               ),
               BotaoPersonalizado(
-                  texto: widget.resposta2![indice],
-                  onPressed: () =>
-                      funcChecaEIncrementa(widget.resposta2![indice]))
+                  texto: B[indice],
+                  onPressed: () => funcChecaEIncrementa(B[indice]))
             ],
           ),
           Row(
@@ -88,16 +127,14 @@ class _QuestionarioState extends State<Questionario> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               BotaoPersonalizado(
-                  texto: widget.resposta3![indice],
-                  onPressed: () =>
-                      funcChecaEIncrementa(widget.resposta3![indice])),
+                  texto: C[indice],
+                  onPressed: () => funcChecaEIncrementa(C[indice])),
               const SizedBox(
                 width: 10,
               ),
               BotaoPersonalizado(
-                  texto: widget.resposta4![indice],
-                  onPressed: () =>
-                      funcChecaEIncrementa(widget.resposta4![indice])),
+                  texto: D[indice],
+                  onPressed: () => funcChecaEIncrementa(D[indice])),
             ],
           ),
           const SizedBox(height: 120),
