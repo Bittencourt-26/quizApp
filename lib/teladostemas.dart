@@ -21,9 +21,9 @@ class _MainscreenState extends State<TelaDosTemas> {
       width: double.infinity,
       height: double.infinity,
       margin: const EdgeInsets.only(top: 50),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-        color: Colors.blueGrey[900],
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Colors.black,
       ),
       child: Column(
         children: [

@@ -7,20 +7,49 @@ class BotaoDaTelaDosTemas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
-          backgroundColor: Colors.blueGrey[900],
-          side: const BorderSide(
-            color: Color.fromARGB(255, 255, 255, 255),
-            width: 3,
-          ),
-          fixedSize: const Size(300, 30)),
-      onPressed: parametroOnPressed,
-      child: Text(
-        texto ?? 'nul error',
-        style: const TextStyle(fontSize: 17),
-      ),
-    );
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      width: 300,
+      height: 40,
+            decoration: const BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.blue,
+                blurRadius: 5,
+                spreadRadius: 0.05,
+              )
+            ]),
+            child: ElevatedButton(
+              onPressed: parametroOnPressed,
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                backgroundColor: Colors.black,
+                side: const BorderSide(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  width: 3,
+                ),
+              ),
+              child: Text(
+                texto ?? 'nul error',
+                style: const TextStyle(
+                  fontSize: 19,
+                  shadows: [
+                    Shadow(
+                      color: Colors.white,
+                      blurRadius: 5,
+                    ),
+                    Shadow(
+                      color: Colors.blue,
+                      blurRadius: 5,
+                    ),
+                    Shadow(
+                      color: Colors.blue,
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
   }
 }

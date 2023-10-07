@@ -24,51 +24,46 @@ class Questionario extends StatefulWidget {
 }
 
 class _QuestionarioState extends State<Questionario> {
-    List A = [];
-    List B = [];
-    List C = [];
-    List D = [];
-  _QuestionarioState(){
-
-    List alternativas = [A, B, C, D];
-
-    for (int para = 0; para < 50; para++) {
-      bool eNul = false;
-      while (!eNul) {
-        int sorteado = Random().nextInt(4);
-        if (alternativas[sorteado].length <= para) {
-          alternativas[sorteado].add(widget.certas[para]);
-          eNul = true;
-        }
-      }
-      while (!eNul) {
-        int sorteado = Random().nextInt(4);
-        if (alternativas[sorteado].length <= para) {
-          alternativas[sorteado].add(widget.erradas1[para]);
-          eNul = true;
-        }
-      }
-      while (!eNul) {
-        int sorteado = Random().nextInt(4);
-        if (alternativas[sorteado].length <= para) {
-          alternativas[sorteado].add(widget.erradas2[para]);
-          eNul = true;
-        }
-      }
-      while (!eNul) {
-        int sorteado = Random().nextInt(4);
-        if (alternativas[sorteado].length <= para) {
-          alternativas[sorteado].add(widget.erradas3[para]);
-          eNul = true;
-        }
-      }
-    }
-  }
   int indice = 0;
   int contadorRespostasCertas = 0;
   int contadorRespostasErradas = 0;
   @override
   Widget build(BuildContext context) {
+  List A = [];
+  List B = [];
+  List C = [];
+  List D = [];
+  List alternativas = [A, B, C, D];
+
+  for (int i = 0; i < 50; i++) {
+    bool eNul = false;
+      int sorteado1 = Random().nextInt(4);
+        alternativas[sorteado1].add(widget.certas[i]);
+      
+    while (!eNul) {
+      int sorteado2 = Random().nextInt(4);
+      if (alternativas[sorteado2].length == i) {
+        alternativas[sorteado2].add(widget.erradas1[i]);
+        eNul = true;
+      }
+    }
+    eNul = false;
+    while (!eNul) {
+      int sorteado3 = Random().nextInt(4);
+      if (alternativas[sorteado3].length == i) {
+        alternativas[sorteado3].add(widget.erradas2[i]);
+        eNul = true;
+      }
+    }
+    eNul = false;
+    while (!eNul) {
+      int sorteado = Random().nextInt(4);
+      if (alternativas[sorteado].length == i) {
+        alternativas[sorteado].add(widget.erradas3[i]);
+        eNul = true;
+      }
+    }
+  }
    
 
     bool estaNoLimite() {
@@ -89,15 +84,14 @@ class _QuestionarioState extends State<Questionario> {
     }
 
     return Container(
-      //parte blueGrey arredondada
       width: double.infinity,
       height: double.infinity,
       margin: const EdgeInsets.only(top: 50),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
           Radius.circular(20),
         ),
-        color: Colors.blueGrey[900],
+        color: Colors.black,
       ),
       child: Column(
         children: [
@@ -112,16 +106,17 @@ class _QuestionarioState extends State<Questionario> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               BotaoPersonalizado(
-                  texto: A[indice],
+                   texto: A[indice],
                   onPressed: () => funcChecaEIncrementa(A[indice])),
               const SizedBox(
-                width: 10,
+                width: 9,
               ),
               BotaoPersonalizado(
                   texto: B[indice],
                   onPressed: () => funcChecaEIncrementa(B[indice]))
             ],
           ),
+          const SizedBox(height: 6),
           Row(
             //as duas segundas quuestôes
             mainAxisAlignment: MainAxisAlignment.center,
@@ -130,10 +125,10 @@ class _QuestionarioState extends State<Questionario> {
                   texto: C[indice],
                   onPressed: () => funcChecaEIncrementa(C[indice])),
               const SizedBox(
-                width: 10,
+                width: 9,
               ),
               BotaoPersonalizado(
-                  texto: D[indice],
+                   texto: D[indice],
                   onPressed: () => funcChecaEIncrementa(D[indice])),
             ],
           ),
@@ -154,6 +149,12 @@ class _QuestionarioState extends State<Questionario> {
                 style: TextStyle(
                   color: Colors.red[900],
                   fontSize: 45,
+                  shadows: const  [
+                    Shadow(
+                      color: Colors.red,
+                      blurRadius: 900,
+                    ),
+                  ],
                 ),
               ),
             ],

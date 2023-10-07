@@ -14,11 +14,11 @@ class MainScreen extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       margin: const EdgeInsets.only(top: 40),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
           Radius.circular(20),
         ),
-        color: Colors.blueGrey[900],
+        color: Colors.black,
       ),
       child: Column(
         children: [
@@ -28,32 +28,92 @@ class MainScreen extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 25),
           ),
           const SizedBox(height: 20), //espaçamento
-          ElevatedButton(
-            onPressed: parametroOnPressed1,
-            style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
-              fixedSize: const Size(190, 45),
-              backgroundColor: Colors.blueGrey[900],
-              side: const BorderSide(
-                color: Color.fromARGB(255, 255, 255, 255),
-                width: 3,
+
+          Container(
+            decoration: const BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.blue,
+                blurRadius: 5,
+                spreadRadius: 0.05,
+              )
+            ]),
+            child: ElevatedButton(
+              onPressed: parametroOnPressed1,
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                fixedSize: const Size(190, 45),
+                backgroundColor: Colors.black,
+                side: const BorderSide(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  width: 3,
+                ),
+              ),
+              child: const Text(
+                'Jogar',
+                style: TextStyle(
+                  fontSize: 19,
+                  shadows: [
+                    Shadow(
+                      color: Colors.white,
+                      blurRadius: 5,
+                    ),
+                    Shadow(
+                      color: Colors.blue,
+                      blurRadius: 5,
+                    ),
+                    Shadow(
+                      color: Colors.blue,
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
               ),
             ),
-            child: const Text('Jogar', style: TextStyle(fontSize: 19),),
           ),
-         const SizedBox(height: 5),
-         ElevatedButton(
-            onPressed: parametroOnPressed2,
-            style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
-              fixedSize: const Size(190, 45),
-              backgroundColor: Colors.blueGrey[900],
-              side: const BorderSide(
-                color: Color.fromARGB(255, 255, 255, 255),
-                width: 3,
+
+          const SizedBox(height: 5),
+          Container(
+            decoration: const BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.blue,
+                blurRadius: 5,
+                spreadRadius: 0.05,
+              )
+            ]),
+            child: ElevatedButton(
+              onPressed: parametroOnPressed2,
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                fixedSize: const Size(190, 45),
+                backgroundColor: Colors.black,
+                side: const BorderSide(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  width: 3,
+                ),
+              ),
+              child: const Text(
+                'Contribuir',
+                style: TextStyle(
+                  fontSize: 19,
+                  shadows: [
+                    Shadow(
+                      color: Colors.white,
+                      blurRadius: 5,
+                    ),
+                    Shadow(
+                      color: Colors.blue,
+                      blurRadius: 5,
+                    ),
+                    Shadow(
+                      color: Colors.blue,
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
               ),
             ),
-            child: const Text('Contribuir', style: TextStyle(fontSize: 19),),
           ),
         ],
       ),
