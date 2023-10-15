@@ -7,8 +7,8 @@ class Questao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 360,
-      height: 55,
+      width: 370,
+      height: 85,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(10),

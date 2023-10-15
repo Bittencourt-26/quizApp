@@ -46,7 +46,7 @@ class _BotaoPersonalizadoState extends State<BotaoPersonalizado> {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style:
-                    TextStyle(fontSize: constraints.maxWidth >= 175 ? 20 : 16),
+                    TextStyle(fontSize: constraints.maxWidth >= 175 ? 20 : 14),
               );
             },
           ),
